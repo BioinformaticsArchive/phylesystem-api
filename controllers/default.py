@@ -690,8 +690,8 @@ def v1():
             raise HTTP(400, 'Expecting a "starting_commit_SHA" argument with the SHA of the parent')
         try:
             commit_msg = kwargs.get('commit_msg','')
-            if commit_msg.strip() == '':
-                # git rejects empty commit messages
+            if commit_msg.strip() == '' or commit_msg.find('\0') !=-1:
+                # git rejects empty commit messages and sh.git hangs on ones with \0
                 commit_msg = None
         except:
             commit_msg = None
@@ -803,8 +803,8 @@ def v1():
             raise HTTP(400, 'Expecting a "starting_commit_SHA" argument with the SHA of the parent')
         try:
             commit_msg = kwargs.get('commit_msg','')
-            if commit_msg.strip() == '':
-                # git rejects empty commit messages
+            if commit_msg.strip() == '' or commit_msg.find('\0') !=-1:
+                # git rejects empty commit messages and sh.git hangs on ones with \0
                 commit_msg = None
         except:
             commit_msg = None
