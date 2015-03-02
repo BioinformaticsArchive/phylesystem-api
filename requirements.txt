@@ -2,7 +2,7 @@ nose==1.2.1
 virtualenv==1.9.1
 requests==1.2.3
 PyGithub==1.19.0
-sh>=1.11
+sh==1.11
 simplejson>=3.3.1
 locket==0.1.1
 dogpile.cache>=0.5.3
